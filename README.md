@@ -81,3 +81,15 @@ O script completo está em [`attacker_profiling_polar.R`](attacker_profiling_pol
    install.packages(c("ggplot2", "dplyr", "showtext"))
 
    install.packages(c("ggplot2", "dplyr", "showtext", "ggtext", "readr"))
+---
+
+### 3. Perfil de Mohamed Salah - estilo SmarterScout
+![Salah Profile](smarter_profile_salah_manual.png)
+
+- Radar de métricas de **posse, ataque e defesa**  
+- Inserção da imagem do jogador usando `magick` + `cowplot`  
+- Dados simulados, mas estrutura pronta para importar CSV real
+
+**Script:** [`03_smarter_profile_salah.R`](03_smarter_profile_salah.R)
+
+---
