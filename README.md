@@ -46,4 +46,38 @@ Principais pontos:
 1. Baixe o arquivo CSV original do FBRef e ajuste o caminho do arquivo no script.
 2. Instale os pacotes necessários:
    ```r
+
+---
+
+# 🎯 Attacker Profiling (2010–2019)
+
+Visualização polar inspirada em layouts editoriais de dados, como *The Athletic* e *Opta Analyst*.
+
+Cada ponto representa um **chute** de jogadores em uma das temporadas de 2010 a 2019.  
+As temporadas são posicionadas como **números de um relógio**, e as distâncias representam a **distância do chute**.
+
+Cores:
+- 🔵 **Scored** – Gols marcados  
+- 🟡 **Saved** – Finalizações defendidas  
+- 🔴 **Missed** – Finalizações erradas  
+
+Formas:
+- ⚪ **Open Play** – Jogadas normais  
+- 🔷 **Freekick** – Faltas  
+- 🟥 **Penalty** – Pênaltis  
+
+![Attacker Profiling Polar Chart](attacker_profiling_polar.png)
+
+---
+
+## 🧾 Código utilizado
+O script completo está em [`attacker_profiling_polar.R`](attacker_profiling_polar.R).
+
+---
+
+### 💡 Reproduzindo o gráfico
+1. Instale os pacotes necessários:
+   ```r
+   install.packages(c("ggplot2", "dplyr", "showtext"))
+
    install.packages(c("ggplot2", "dplyr", "showtext", "ggtext", "readr"))
