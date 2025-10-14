@@ -132,7 +132,7 @@ Este projeto tem como objetivo mostrar, em formato gráfico, **como os toques of
 
 Gráfico gerado:
 
-![Vasco Terços Ofensivos](images/Vasco_tercos_ofensivos.png)
+![Vasco Terços Ofensivos](Vasco_tercos_ofensivos.png)
 
 ---
 
