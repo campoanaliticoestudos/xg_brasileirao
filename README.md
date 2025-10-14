@@ -93,3 +93,27 @@ O script completo está em [`attacker_profiling_polar.R`](attacker_profiling_pol
 **Script:** [`03_smarter_profile_salah.R`](03_smarter_profile_salah.R)
 
 ---
+
+# ⚽ Vasco da Gama – Terços Ofensivos (Brasileirão 2025)
+
+Análise visual da distribuição dos **toques ofensivos** do Vasco da Gama na partida **Vasco 2–3 Corinthians**, válida pelo Brasileirão 2025.
+
+---
+
+## 📊 Objetivo
+
+Este projeto tem como objetivo mostrar, em formato gráfico, **como os toques ofensivos se distribuem em cada terço do campo** — esquerda, centro e direita — no estilo visual da **Opta Analyst**.
+
+---
+
+## 🧠 Metodologia
+
+1. **Leitura dos dados de evento** da partida.
+2. **Filtragem** de ações ofensivas (passes, chutes, dribles, gols e toques).
+3. **Classificação** das ações por região do campo (`x` em 0–100 → esquerda, centro, direita).
+4. **Visualização** dos percentuais e volumes por terço.
+
+---
+
+## 🧩 Estrutura do repositório
+
