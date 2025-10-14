@@ -168,7 +168,7 @@ Mostrar a **consistência e variação de desempenho** do clube ao longo dos ano
 
 ## 📈 Resultado
 
-![Desempenho Corinthians](images/desempenho_corinthians.png)
+![Desempenho Corinthians](desempenho_corinthians.png)
 
 ---
 ## 🏷️ Autor
