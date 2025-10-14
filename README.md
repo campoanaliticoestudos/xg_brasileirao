@@ -117,3 +117,28 @@ Este projeto tem como objetivo mostrar, em formato gráfico, **como os toques of
 
 ## 🧩 Estrutura do repositório
 
+
+---
+
+## 💻 Tecnologias utilizadas
+
+- **R** (tidyverse, ggplot2, ggsoccer, showtext)
+- **Fonte:** Rajdhani (Google Fonts)
+- **Estilo:** inspirado nos visuais da Opta Analyst
+
+---
+
+## 📈 Resultado
+
+Gráfico gerado:
+
+![Vasco Terços Ofensivos](images/Vasco_tercos_ofensivos.png)
+
+---
+
+## 🏷️ Autor
+
+**Campo Analítico**  
+📊 Consultoria e educação em análise de dados aplicada ao futebol.  
+📧 [contato@campoanalitico.com.br](mailto:contato@campoanalitico.com.br)  
+🌐 [@campoanaliticoestudos](https://github.com/campoanaliticoestudos)
