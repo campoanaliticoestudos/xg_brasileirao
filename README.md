@@ -140,5 +140,5 @@ Gráfico gerado:
 
 **Campo Analítico**  
 📊 Consultoria e educação em análise de dados aplicada ao futebol.  
-📧 [contato@campoanalitico.com.br](mailto:contatocampoanalitico@gmail.com)  
+📧 [contatocampoanalitico@gmail.com](mailto:contatocampoanalitico@gmail.com)  
 🌐 [@campoanaliticoestudos](https://github.com/campoanaliticoestudos)
