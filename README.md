@@ -135,7 +135,42 @@ Gráfico gerado:
 ![Vasco Terços Ofensivos](Vasco_tercos_ofensivos.png)
 
 ---
+# 🏆 Desempenho do Corinthians no Brasileirão (2014–2025)
 
+Visualização da campanha do Corinthians nas últimas temporadas do Campeonato Brasileiro, mostrando vitórias, empates e derrotas por temporada.
+
+---
+
+## 📊 Objetivo
+
+Mostrar a **consistência e variação de desempenho** do clube ao longo dos anos, destacando períodos de títulos e quedas de rendimento.
+
+---
+
+## 🧠 Metodologia
+
+1. Base criada manualmente a partir de dados públicos (Wikipédia).  
+2. Cada linha representa uma temporada (2014–2025).  
+3. Gráfico de barras empilhadas com a soma total de jogos.  
+
+---
+
+## 💻 Tecnologias
+
+- **R**
+  - tidyverse
+  - ggplot2
+  - showtext
+- **Fonte:** Poppins (Google Fonts)
+- **Paleta de cores:** Verde (Vitórias), Amarelo (Empates), Vermelho (Derrotas)
+
+---
+
+## 📈 Resultado
+
+![Desempenho Corinthians](images/desempenho_corinthians.png)
+
+---
 ## 🏷️ Autor
 
 **Campo Analítico**  
