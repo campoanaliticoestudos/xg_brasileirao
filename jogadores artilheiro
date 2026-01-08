@@ -1,7 +1,14 @@
+# ==========================================
+# ANÁLISE DE SCOUTING - SÉRIE A 2026
+# ==========================================
+
+# Carregar bibliotecas necessárias
 library(dplyr)
 library(gt)
+library(ggplot2)
+# library(webshot2) # Necessário para gtsave
 
-# 1. Seus Dados Originais
+# 1. DADOS ORIGINAIS
 dados_completos <- data.frame(
   Pos = 1:20,
   Time = c("Cruzeiro", "Flamengo", "Palmeiras", "Vasco", "Vasco", "Cuiabá", "Grêmio", "Palmeiras", "Flamengo", "Internacional", "Bahia", "Santos", "Bragantino", "Corinthians", "São Paulo", "Santos", "Fortaleza", "Santos", "Atlético-MG", "Flamengo"),
@@ -11,64 +18,43 @@ dados_completos <- data.frame(
   Nota = c(7.33, 7.74, 7.16, 7.20, 7.03, 7.32, 7.39, 7.18, 7.18, 7.49, 7.08, 6.99, 7.35, 6.97, 7.03, 7.03, 6.83, 7.37, 7.22, 6.96)
 )
 
-# 2. Dividindo os dados em duas colunas (1-10 e 11-20)
+# 2. PREPARAÇÃO DA TABELA (SPLIT 10/10)
 col_esquerda <- dados_completos[1:10, ]
 col_direita <- dados_completos[11:20, ]
-
-# Criando um dataframe lado a lado
 dados_split <- cbind(col_esquerda, col_direita)
 
-# 3. Gerando a Tabela Split
+# Gerando o objeto tabela_final
 tabela_final <- dados_split %>%
   gt() %>%
-  # Configurando cabeçalhos idênticos para os dois lados
   cols_label(
     Pos = "", Nome = "JOGADOR", Gols = "G", xG = "xG", Nota = "NOTA",
     Pos.1 = "", Nome.1 = "JOGADOR", Gols.1 = "G", xG.1 = "xG", Nota.1 = "NOTA"
   ) %>%
-  # Estilo de Fonte Maior (Aumentado para 16px nos nomes)
   tab_options(
-    table.font.names = "Inter, Arial, sans-serif",
+    table.font.names = "Arial, sans-serif",
     table.font.size = px(14),
     data_row.padding = px(8),
-    column_labels.font.size = px(12),
-    column_labels.font.weight = "bold",
-    table.background.color = "#FDFDFD",
-    column_labels.border.bottom.color = "black",
-    column_labels.border.bottom.width = px(2)
+    table.background.color = "#FDFDFD"
   ) %>%
-  # Estilização de Destaque (Nomes e Notas)
   tab_style(
     style = list(cell_text(weight = "bold", size = px(16))),
     locations = cells_body(columns = c(Nome, Nome.1))
   ) %>%
   tab_style(
-    style = cell_text(weight = "bold", color = "#111111"),
-    locations = cells_body(columns = c(Gols, Gols.1, Nota, Nota.1))
-  ) %>%
-  # Adicionando uma borda vertical no meio para separar as duas tabelas
-  tab_style(
     style = cell_borders(sides = "right", color = "#D3D3D3", weight = px(2)),
     locations = cells_body(columns = Nota) 
   ) %>%
-  # Cabeçalho Principal Estilo The Athletic
   tab_header(
     title = html("<b style='font-size: 28px;'>PROJEÇÃO DE GOLS: SÉRIE A</b>"),
-    subtitle = html("<div style='border-top: 1px solid #000; margin-top: 5px; padding-top: 5px;'>DATA: 07.01.26 | SCOUTING REPORT</div>")
+    subtitle = "DATA: 07.01.26 | SCOUTING REPORT"
   ) %>%
-  cols_align(align = "center") %>%
-  cols_align(align = "left", columns = c(Nome, Nome.1))
+  cols_align(align = "center")
 
-tabela_final
+# Visualizar e Salvar Tabela
+print(tabela_final)
+gtsave(tabela_final, "tabela_artilharia.png")
 
-
-
-# Instale se necessário: install.packages("ggplot2")
-library(ggplot2)
-library(dplyr)
-
-# 1. Preparando os dados (Adicionando Idade e % Minutos para o exemplo)
-# Substitua esta parte pelo seu carregamento de dados real
+# 3. GRÁFICO DE PERFIL DE IDADE
 dados_grafico <- data.frame(
   Nome = c("Kaio Jorge", "Arrascaeta", "Vitor Roque", "Rayan", "Vegetti", "Reinaldo", 
            "C. Vinícius", "José López", "Pedro", "Alan Patrick", "Willian José", 
@@ -81,55 +67,18 @@ dados_grafico <- data.frame(
                  "Novo", "Novo", "Antigo", "Antigo")
 )
 
-# 2. Criando o Gráfico
-ggplot(dados_grafico, aes(x = Idade, y = Minutos_Pct)) +
-  # Faixa de "Anos de Pico" (Peak Years - geralmente 24 a 29 anos)
-  annotate("rect", xmin = 24, xmax = 29, ymin = 0, ymax = 100, 
-           fill = "grey90", alpha = 0.5) +
-  annotate("text", x = 26.5, y = 102, label = "Anos de Pico", 
-           color = "grey50", size = 3, fontface = "italic") +
-  # Linhas de grade sutis
-  theme_minimal(base_family = "Arial") +
-  # Pontos (Cores baseadas no tempo de clube)
+grafico_idade <- ggplot(dados_grafico, aes(x = Idade, y = Minutos_Pct)) +
+  annotate("rect", xmin = 24, xmax = 29, ymin = 0, ymax = 100, fill = "grey90", alpha = 0.5) +
+  theme_minimal() +
   geom_point(aes(fill = Time_Clube), size = 4, shape = 21, color = "white", stroke = 1) +
-  # Rótulos dos nomes dos jogadores
   geom_text(aes(label = Nome), vjust = -1.2, size = 3, check_overlap = TRUE, fontface = "bold") +
-  # Escalas e Eixos
-  scale_x_continuous(breaks = seq(16, 40, 4), limits = c(16, 41)) +
-  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 105)) +
   scale_fill_manual(values = c("Antigo" = "#673AB7", "Novo" = "#F44336", "Base" = "#FF9800")) +
-  # Títulos e legendas
   labs(
     title = "Perfil de Idade do Elenco",
     subtitle = "Série A - Temporada 2025-26",
-    x = "Idade",
-    y = "Participação em Minutos (%)",
-    fill = "Status no Clube",
-    caption = "Fonte: Seus Dados | Estilo Opta Analyst"
-  ) +
-  # Ajustes finos de layout
-  theme(
-    plot.title = element_text(face = "bold", size = 16),
-    panel.grid.minor = element_blank(),
-    legend.position = "right",
-    axis.title = element_text(face = "bold", color = "grey30")
+    x = "Idade", y = "Participação em Minutos (%)"
   )
 
-
-# Salvar o gráfico em alta resolução (PNG)
-ggsave(
-  filename = "perfil_idade_elenco.png", 
-  plot = last_plot(),         # Pega o último gráfico gerado
-  width = 10,                 # Largura em polegadas
-  height = 8,                 # Altura em polegadas
-  dpi = 300,                  # Alta resolução para impressão ou web
-  bg = "white"                # Garante que o fundo não fique transparente
-)
-
-# Caso precise para um PDF (vetorial, não perde qualidade ao dar zoom)
-ggsave(
-  filename = "perfil_idade_elenco.pdf",
-  width = 10,
-  height = 8,
-  device = "pdf"
-)
+# Visualizar e Salvar Gráfico
+print(grafico_idade)
+ggsave("perfil_idade_elenco.png", plot = grafico_idade, width = 10, height = 8, dpi = 300, bg = "white")
