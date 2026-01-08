@@ -1,179 +1,84 @@
-# xg_brasileirao
+# ⚽ Portfólio de Análise de Dados: Campo Analítico
 
-# 📊 Expected Goals (xG) - Brasileirão Série A
+Este repositório reúne visualizações avançadas de dados de futebol, utilizando **R**, focadas em scouting, desempenho individual e métricas coletivas.
+
+---
+
+# 📊 Projeção de Gols & Perfil de Idade (Série A 2026)
+
+Esta seção apresenta uma análise de desempenho dos artilheiros e a maturidade do elenco na temporada atual.
+
+### 🏆 Tabela de Artilharia e xG
+Tabela estilizada inspirada no *The Athletic*, dividida em colunas para facilitar a leitura dos principais nomes da competição.
+![Tabela de Gols](tabela_artilharia.png)
+
+### 📈 Perfil de Idade do Elenco
+Gráfico de dispersão mostrando a relação entre idade e minutos jogados, com destaque para a "Zona de Pico" (Peak Years).
+![Perfil de Idade](perfil_idade_elenco.png)
+
+---
+
+# 🛡️ xG Brasileirão - Top Scorers por Clube
 
 Visualização criada em **R** usando `ggplot2`, `dplyr` e `showtext`.
-
 O gráfico mostra o **xG acumulado por clube** e o **principal artilheiro** de cada equipe na Série A.
 
 ![xG Brasileirão](xg_brasileirao_topscorer.png)
 
 ---
 
-## 🧾 Código utilizado
-O script completo está disponível em [`xg_brasileirao_topscorer.R`](xg_brasileirao_topscorer.R).
+# ⚔️ Top Defensive Actions — Paulo Henrique (Série A 2025)
 
-Principais pontos:
-- **Fonte Montserrat** importada via `showtext`.
-- **Destaque visual** para o clube “Mirassol”.
-- **Eixo horizontal** com `coord_flip()`.
-- **Exportação automática** do gráfico com `ggsave()`.
-
----
-
-# 🛡️ Top Defensive Actions — Paulo Henrique (Série A 2025)
-
-Visualização criada em **R** usando `ggplot2`, `dplyr` e `showtext`.
-
-O gráfico mostra as **10 partidas** em que **Paulo Henrique** registrou o maior número de **Tackles + Interceptions (Tkl+Int)** durante a temporada 2025.
+O gráfico mostra as **10 partidas** em que o lateral **Paulo Henrique** registrou o maior número de **Tackles + Interceptions (Tkl+Int)**.
 
 ![Paulo Henrique Defensive Actions](paulo_henrique_defensive_actions.png)
 
 ---
 
-## 🧾 Código utilizado
-O script completo está disponível em [`paulo_henrique_defensive_actions.R`](paulo_henrique_defensive_actions.R).
+# 🎯 Attacker Profiling (Polar Chart)
 
-Principais pontos:
-- Leitura do dataset via `read_csv()`.
-- Seleção e formatação das variáveis de interesse (`Opponent`, `Date`, `Tkl+Int`).
-- Destaque para as **10 partidas de maior desempenho defensivo**.
-- Gradiente de cor azul representando intensidade de ações defensivas.
+Visualização polar que mapeia a distância e o resultado de finalizações entre 2010–2019.
+As temporadas são posicionadas como **números de um relógio**.
 
----
-
-### 💡 Reproduzindo o gráfico
-1. Baixe o arquivo CSV original do FBRef e ajuste o caminho do arquivo no script.
-2. Instale os pacotes necessários:
-   ```r
-
----
-
-# 🎯 Attacker Profiling (2010–2019)
-
-Visualização polar inspirada em layouts editoriais de dados, como *The Athletic* e *Opta Analyst*.
-
-Cada ponto representa um **chute** de jogadores em uma das temporadas de 2010 a 2019.  
-As temporadas são posicionadas como **números de um relógio**, e as distâncias representam a **distância do chute**.
-
-Cores:
-- 🔵 **Scored** – Gols marcados  
-- 🟡 **Saved** – Finalizações defendidas  
-- 🔴 **Missed** – Finalizações erradas  
-
-Formas:
-- ⚪ **Open Play** – Jogadas normais  
-- 🔷 **Freekick** – Faltas  
-- 🟥 **Penalty** – Pênaltis  
-
+Cores: 🔵 Gols | 🟡 Defesas | 🔴 Erros  
 ![Attacker Profiling Polar Chart](attacker_profiling_polar.png)
 
 ---
 
-## 🧾 Código utilizado
-O script completo está em [`attacker_profiling_polar.R`](attacker_profiling_polar.R).
+# 👤 Perfil de Mohamed Salah - Estilo SmarterScout
 
----
+Radar de métricas avançadas comparando posse, ataque e defesa, com inserção de imagem via `magick`.
 
-### 💡 Reproduzindo o gráfico
-1. Instale os pacotes necessários:
-   ```r
-   install.packages(c("ggplot2", "dplyr", "showtext"))
-
-   install.packages(c("ggplot2", "dplyr", "showtext", "ggtext", "readr"))
----
-
-### 3. Perfil de Mohamed Salah - estilo SmarterScout
 ![Salah Profile](smarter_profile_salah_manual.png)
 
-- Radar de métricas de **posse, ataque e defesa**  
-- Inserção da imagem do jogador usando `magick` + `cowplot`  
-- Dados simulados, mas estrutura pronta para importar CSV real
+---
 
-**Script:** [`03_smarter_profile_salah.R`](03_smarter_profile_salah.R)
+# 💢 Vasco da Gama – Terços Ofensivos
+
+Análise visual da distribuição dos **toques ofensivos** do Vasco por região do campo (esquerda, centro e direita) no estilo **Opta Analyst**.
+
+![Vasco Terços Ofensivos](Vasco_tercos_ofensivos.png)
 
 ---
 
-# ⚽ Vasco da Gama – Terços Ofensivos (Brasileirão 2025)
+# 🏆 Desempenho do Corinthians (2014–2025)
 
-Análise visual da distribuição dos **toques ofensivos** do Vasco da Gama na partida **Vasco 2–3 Corinthians**, válida pelo Brasileirão 2025.
+Gráfico de barras empilhadas mostrando o histórico de vitórias, empates e derrotas do clube na era dos pontos corridos recente.
 
----
-
-## 📊 Objetivo
-
-Este projeto tem como objetivo mostrar, em formato gráfico, **como os toques ofensivos se distribuem em cada terço do campo** — esquerda, centro e direita — no estilo visual da **Opta Analyst**.
-
----
-
-## 🧠 Metodologia
-
-1. **Leitura dos dados de evento** da partida.
-2. **Filtragem** de ações ofensivas (passes, chutes, dribles, gols e toques).
-3. **Classificação** das ações por região do campo (`x` em 0–100 → esquerda, centro, direita).
-4. **Visualização** dos percentuais e volumes por terço.
-
----
-
-## 🧩 Estrutura do repositório
-
+![Desempenho Corinthians](desempenho_corinthians.png)
 
 ---
 
 ## 💻 Tecnologias utilizadas
 
-- **R** (tidyverse, ggplot2, ggsoccer, showtext)
-- **Fonte:** Rajdhani (Google Fonts)
-- **Estilo:** inspirado nos visuais da Opta Analyst
+- **Linguagem:** R
+- **Bibliotecas:** `tidyverse`, `ggplot2`, `gt`, `ggsoccer`, `showtext`, `magick`, `cowplot`.
+- **Estilo:** Inspirado em Opta Analyst, The Athletic e SmarterScout.
 
 ---
 
-## 📈 Resultado
-
-Gráfico gerado:
-
-![Vasco Terços Ofensivos](Vasco_tercos_ofensivos.png)
-
----
-# 🏆 Desempenho do Corinthians no Brasileirão (2014–2025)
-
-Visualização da campanha do Corinthians nas últimas temporadas do Campeonato Brasileiro, mostrando vitórias, empates e derrotas por temporada.
-
----
-
-## 📊 Objetivo
-
-Mostrar a **consistência e variação de desempenho** do clube ao longo dos anos, destacando períodos de títulos e quedas de rendimento.
-
----
-
-## 🧠 Metodologia
-
-1. Base criada manualmente a partir de dados públicos (Wikipédia).  
-2. Cada linha representa uma temporada (2014–2025).  
-3. Gráfico de barras empilhadas com a soma total de jogos.  
-
----
-
-## 💻 Tecnologias
-
-- **R**
-  - tidyverse
-  - ggplot2
-  - showtext
-- **Fonte:** Poppins (Google Fonts)
-- **Paleta de cores:** Verde (Vitórias), Amarelo (Empates), Vermelho (Derrotas)
-
----
-
-## 📈 Resultado
-
-![Desempenho Corinthians](desempenho_corinthians.png)
-
----
 ## 🏷️ Autor
 
-**Campo Analítico**  
-📊 Consultoria e educação em análise de dados aplicada ao futebol.  
+**Campo Analítico** 📊 Consultoria e educação em análise de dados aplicada ao futebol.  
 📧 [contatocampoanalitico@gmail.com](mailto:contatocampoanalitico@gmail.com)  
 🌐 [@campoanaliticoestudos](https://github.com/campoanaliticoestudos)
